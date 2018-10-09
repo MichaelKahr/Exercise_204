@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,10 +8,17 @@ import javax.swing.table.AbstractTableModel;
 public class AvModel extends AbstractTableModel {
 
     private ArrayList<Anlage> anlagen = new ArrayList<>();
-    private doubleUtil util = new doubleUtil();
 
     private static String[] colNames = {"Bezeichnung", "AK", "Inbetr.na...", "ND", "bish. ND",
         "AfA bisher", "Wert vor ...", "AfA d. J.", "BW 31.12"};
+
+    public double convert(String in) {
+        if (in.contains(",")) {
+            in = in.replaceAll(",", ".");
+            return Double.parseDouble(in);
+        }
+        return Double.parseDouble(in);
+    }
 
     public void add(Anlage a) {
         anlagen.add(a);
@@ -28,7 +36,7 @@ public class AvModel extends AbstractTableModel {
                     split[1] = split[1].replace(".", "");
 
                 }
-                anlagen.add(new Anlage(split[0], Double.parseDouble(split[1]), util.getDouble(split[2]), util.getDouble(split[3])));
+                anlagen.add(new Anlage(split[0], Double.parseDouble(split[1]), convert(split[2]), convert(split[3])));
                 fireTableDataChanged();
             }
 
@@ -39,7 +47,7 @@ public class AvModel extends AbstractTableModel {
     }
 
     public void update() {
-        fireTableCellUpdated(0, anlagen.size()-1);
+        fireTableCellUpdated(0, anlagen.size() - 1);
     }
 
     @Override
@@ -49,7 +57,7 @@ public class AvModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 9;
+        return colNames.length;
     }
 
     @Override
