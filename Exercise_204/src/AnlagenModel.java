@@ -27,22 +27,21 @@ public class AnlagenModel extends AbstractTableModel {
     public void load(File f) {
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             br.readLine();
-            String s;
+            String line;
 
-            while ((s = br.readLine()) != null) {
-                String[] split = s.split(";");
-                if (split[1].contains(".")) {
-                    split[1] = split[1].replace(".", "");
-
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data[1].contains(".")) {
+                    data[1] = data[1].replace(".", "");
                 }
-                anlagen.add(new Anlage(split[0], Double.parseDouble(split[1]), convert(split[2]), convert(split[3])));
+                anlagen.add(new Anlage(data[0], Double.parseDouble(data[1]), convert(data[2]), convert(data[3])));
                 fireTableDataChanged();
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            
         }
-        System.out.println("lul");
+        System.out.println("test");
     }
 
     public void update() {
@@ -60,9 +59,9 @@ public class AnlagenModel extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int i, int i1) {
-        Anlage a = anlagen.get(i);
-        return a;
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Anlage anlage = anlagen.get(rowIndex);
+        return anlage;
     }
 
     @Override

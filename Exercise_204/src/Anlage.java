@@ -12,24 +12,45 @@ public class Anlage {
         this.duration = duration;
     }
     
-    public double calcDurUntilNow(int y){
-        return (double) y - year;
+    public double calcDurUntilNow(int i){
+        if((double) i - year < 0){
+            return duration;
+        }
+        if(i - year >= duration){
+            return duration;
+        }
+        return (double) i - year;
     }
     
-    public double calcAfAUntilNow(int y){
-        return calcDurUntilNow(y)/duration*ak;
+    public double calcAfAUntilNow(int i){
+        return calcDurUntilNow(i)/duration*ak;
     }
     
-    public double calcValueBefore(int y){
-        return ak-calcAfAUntilNow(y);
+    public double calcValueBefore(int i){
+        double afaUN = calcAfAUntilNow(i);
+        if(ak  - afaUN < 0){
+            return 0;
+        }else{
+            return ak - afaUN;
+        }
     }
     
-    public double calcAfA(int y){
-        return ak/duration;
+    public double calcAfA(int i){
+        if(calcValueBefore(i) == 0){
+            return 0;
+        }else{
+            return ak/duration;
+        }
     }
     
-    public double calcBW(int y){
-        return calcValueBefore(y)-calcAfA(y);
+    public double calcBW(int i){
+        double d = calcValueBefore(i), a = calcAfA(i);
+        
+        if(d - a > 0){
+            return 0;
+        }else{
+            return d - a;
+        }
     }
 
     public String getText() {
