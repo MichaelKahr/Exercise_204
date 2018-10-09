@@ -8,7 +8,6 @@ public class AnlagenGUI extends javax.swing.JFrame {
         jtOut.setModel(model);
         jtOut.setDefaultRenderer(Object.class, new TableRenderer());
         jtOut.setShowGrid(true);
-
     }
     
     @SuppressWarnings("unchecked")
