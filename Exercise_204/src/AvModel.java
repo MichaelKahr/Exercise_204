@@ -35,6 +35,7 @@ public class AvModel extends AbstractTableModel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("lul");
     }
 
     public void update() {
