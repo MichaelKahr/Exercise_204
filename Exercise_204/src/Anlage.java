@@ -29,7 +29,6 @@ public class Anlage {
     }
     
     public double calcBW(int y){
-        System.out.println("Calc: "+y);
         return calcValueBefore(y)-calcAfA(y);
     }
 

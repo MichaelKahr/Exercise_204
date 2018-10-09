@@ -6,7 +6,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.TableCellRenderer;
 
-public class CellRenderer implements TableCellRenderer {
+public class TableRenderer implements TableCellRenderer {
 
     @Override
     public Component getTableCellRendererComponent(JTable jtable, Object o, boolean bln, boolean bln1, int i, int i1) {
@@ -23,28 +23,28 @@ public class CellRenderer implements TableCellRenderer {
                 label.setText(a.getText());
                 break;
             case 1:
-                label.setText(df.format(a.getAk()));
+                label.setText(String.format("%,.2f",a.getAk()));
                 break;
             case 2:
-                label.setText(df.format(a.getYear()));
+                label.setText(""+a.getYear());
                 break;
             case 3:
-                label.setText(df.format(a.getDuration()));
+                label.setText(""+a.getDuration());
                 break;
             case 4:
-                label.setText(df.format(a.calcDurUntilNow(AvGUI.year)));
+                label.setText(""+a.calcDurUntilNow(AnlagenGUI.year));
                 break;
             case 5:
-                label.setText(df.format(a.calcAfAUntilNow(AvGUI.year)));
+                label.setText(String.format("%,.2f",a.calcAfAUntilNow(AnlagenGUI.year)));
                 break;
             case 6:
-                label.setText(df.format(a.calcValueBefore(AvGUI.year)));
+                label.setText(String.format("%,.2f",a.calcValueBefore(AnlagenGUI.year)));
                 break;
             case 7:
-                label.setText(df.format(a.calcAfA(AvGUI.year)));
+                label.setText(String.format("%,.2f",a.calcAfA(AnlagenGUI.year)));
                 break;
             case 8:
-                label.setText(df.format(a.calcBW(AvGUI.year)));
+                label.setText(String.format("%,.2f",a.calcBW(AnlagenGUI.year)));
                 break;
 
         }

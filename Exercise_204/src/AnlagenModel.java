@@ -2,15 +2,14 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 
-public class AvModel extends AbstractTableModel {
+public class AnlagenModel extends AbstractTableModel {
 
-    private ArrayList<Anlage> anlagen = new ArrayList<>();
+    private LinkedList<Anlage> anlagen = new LinkedList<>();
 
-    private static String[] colNames = {"Bezeichnung", "AK", "Inbetr.na...", "ND", "bish. ND",
-        "AfA bisher", "Wert vor ...", "AfA d. J.", "BW 31.12"};
+    private static String[] colNames = {"Bezeichnung", "AK", "Inbetr.na...", "ND", "bish. ND","AfA bisher", "Wert vor ...", "AfA d. J.", "BW 31.12"};
 
     public double convert(String in) {
         if (in.contains(",")) {
@@ -74,5 +73,4 @@ public class AvModel extends AbstractTableModel {
     public int listSize() {
         return anlagen.size();
     }
-
 }
