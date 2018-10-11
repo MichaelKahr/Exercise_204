@@ -9,13 +9,10 @@ public class TableRenderer implements TableCellRenderer {
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, 
     boolean hasFocus, int row, int column) {
-        
-
         Anlage a = (Anlage) value;
         JLabel label = new JLabel();
         label.setOpaque(true);
         label.setForeground(Color.BLACK);
-        
         switch (column) {
             case 0: label.setText(a.getText());break;
             case 1: label.setText(String.format("%,.2f",a.getAk()));break;

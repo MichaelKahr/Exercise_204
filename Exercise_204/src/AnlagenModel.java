@@ -28,7 +28,6 @@ public class AnlagenModel extends AbstractTableModel {
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             br.readLine();
             String line;
-
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(";");
                 if (data[1].contains(".")) {
@@ -45,7 +44,7 @@ public class AnlagenModel extends AbstractTableModel {
     }
 
     public void update() {
-        fireTableCellUpdated(0, anlagen.size() - 1);
+        fireTableDataChanged();
     }
 
     @Override
