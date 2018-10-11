@@ -44,13 +44,7 @@ public class Anlage {
     }
     
     public double calcBW(int i){
-        double d = calcValueBefore(i), a = calcAfA(i);
-        
-        if(d - a > 0){
-            return 0;
-        }else{
-            return d - a;
-        }
+        return calcValueBefore(i)-calcAfA(i);
     }
 
     public String getText() {

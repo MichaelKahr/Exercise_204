@@ -13,6 +13,9 @@ public class AnlagenGUI extends javax.swing.JFrame {
         table.setModel(model);
         table.setDefaultRenderer(Object.class, new TableRenderer());
 
+        for(int i = 2010;i<2061;i++){
+        cbYear.addItem(""+i);
+    }
         try {
             model.load(f);
         } catch (Exception ex) {
